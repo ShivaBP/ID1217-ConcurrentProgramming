@@ -15,6 +15,7 @@ double start_time, end_time, error, difference;
 FILE *file;
 bool go = false;
 int threadsArrived = 0;
+
 void barrier(){
 #pragma omp atomic  
         threadsArrived++;
@@ -208,7 +209,7 @@ int main(int argc, char const *argv[])
     }
     /* start V-cycle */
     start_time = read_timer();
-    #pragma omp parallel num_threads(numWorkers)
+    #pragma omp parallel
     {
     jacobi(grid4, new4, gridSize4, 4);
     restriction(grid4, grid3, gridSize3);

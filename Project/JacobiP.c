@@ -71,7 +71,7 @@ int main(int argc, char const *argv[])
     
     for (count = 0; count < iterations / 2; count++)
     {
-#pragma omp parallel num_threads(numWorkers)
+#pragma omp parallel  private(j) 
         {
 #pragma omp for 
             for (i = 1; i < matrixSize; i++)
